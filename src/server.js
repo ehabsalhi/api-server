@@ -6,12 +6,14 @@ const routerFood = require('./routes/food')
 const routerClothes = require('./routes/clothes')
 const page404 = require('./error-handlers/404')
 const page500 = require('./error-handlers/500')
+const routerUser = require('./routes/user')
 
 
 app.use(express.json())
 app.use(cors())
 app.use(routerClothes)
 app.use(routerFood)
+app.use(routerUser)
 
 
 

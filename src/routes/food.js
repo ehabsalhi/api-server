@@ -1,5 +1,5 @@
 const express = require("express")
-const { food1 } = require("../models")
+const { foodCollection } = require("../models")
 const router = express.Router()
 
 router.get('/allfood', allFood)
@@ -9,20 +9,20 @@ router.put('/allfood/:id', updateFood)
 router.delete('/allfood/:id', deleteFood)
 
 async function allFood(req , res){
-     const allFood = await food1.findAll()
+     const allFood = await foodCollection.read()
      res.status(200).json(allFood)
 }
 
 async function postFood (req ,res){
      const body = req.body ;
-     const postFood =await food1.create(body)
+     const postFood =await foodCollection.create(body)
 
      res.status(201).json(postFood)
 }
 
 async function oneFood(req , res) {
      const id = req.params.id ;
-     const oneFood =await food1.findOne({where :{id}})
+     const oneFood =await foodCollection.read(id)
 
      res.status(200).json(oneFood)
 }
@@ -31,9 +31,9 @@ async function updateFood(req,res){
      const id = req.params.id
      const body = req.body
      // const updateFood = food1.update(body,{where:{id}})
+     // const findOne = await food1.findOne({where : {id}})
 
-     const findOne = await food1.findOne({where : {id}})
-     const updateFood = await findOne.update(body)
+     const updateFood = await foodCollection.update(id,body)
 
      res.status(202).json(updateFood)
 
@@ -41,7 +41,7 @@ async function updateFood(req,res){
 
 async function deleteFood (req,res) {
      const id = req.params.id
-     const deleteFood = food1.destroy({where : {id}})
+     const deleteFood = foodCollection.delete(id)
 
      res.status(204).json(deleteFood)
 

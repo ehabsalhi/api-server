@@ -1,16 +1,16 @@
 'use strict'
 
 
-const clothes = (sequelize , DataTypes) => sequelize.define('clothes',{
+const clothesED = (sequelize , DataTypes) => sequelize.define('clothesTable',{
      name : {
           type : DataTypes.STRING,
           allowNull : false
      },
-     gender :{
-          type : DataTypes.STRING
+     externalId :{
+          type : DataTypes.INTEGER
      }
 
 }) 
 
 
-module.exports = clothes ;
+module.exports = clothesED ;

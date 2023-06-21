@@ -23,7 +23,7 @@ async function postUser (req ,res){
 
 async function oneUser(req , res) {
      const id = req.params.id ;
-     const oneUser =await UserCollection.read({where :{id}})
+     const oneUser =await UserCollection.read(id)
 
      res.status(200).json(oneUser)
 }

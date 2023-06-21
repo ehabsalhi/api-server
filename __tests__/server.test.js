@@ -74,7 +74,7 @@ describe('test server' , () =>{
                {
                  id: 1,
                  name : 'pants' ,
-                 gender : 'male'
+                 externalId : 1
                }
              ]
           expect(JSON.parse(res.text).name).toBe(list.name)
@@ -82,7 +82,7 @@ describe('test server' , () =>{
      it('post clothes' ,async () =>{
           const res = await muke.post('/clothes').send({
                name : 'pants' ,
-               gender : 'male'
+               externalId : 1
           })
           console.log(JSON.parse(res.text).name);
           expect(JSON.parse(res.text).name).toBe('pants')
@@ -97,7 +97,7 @@ describe('test server' , () =>{
      it('updateClothe' ,async () =>{
           const res = await muke.put('/clothes/1').send({
                name : 'shirt',
-               gender : 'female'
+               externalId : 1
           })
           console.log(JSON.parse(res.text).name);
 
@@ -112,6 +112,52 @@ describe('test server' , () =>{
      })
 
      //=========================================================
+          it('post user' ,async () =>{
+               const res = await muke.post('/user').send({
+                    name : 'ehab' ,
+               })
+               expect(JSON.parse(res.text).name).toBe('ehab')
+          })
+          it('get all user' ,async () =>{
+               const res = await muke.get('/user')
+               const list =     [
+                    {
+                      id: 1,
+                      name : 'ehab'
+                    }
+                  ]
+               expect(JSON.parse(res.text).name).toBe(list.name)
+          })
+
+          it('get one user' ,async () =>{
+               const res = await muke.get('/user/1')     
+               expect(JSON.parse(res.text).name).toBe('ehab')
+          })
+         
+          it('update User' ,async () =>{
+               const res = await muke.put('/user/1').send({
+                    name : 'eyad',
+               })
+               // console.log(JSON.parse(res.text).name , '');
+     
+               expect(JSON.parse(res.text).name).toBe('eyad')
+          })
+          
+          it('User clothes' ,async () =>{
+               const res = await muke.get('/userclothes/1')
+               console.log(res.body , '55555555555555555555');
+               expect(JSON.parse(res.text).name).toBe('eyad')
+          })
+
+          it('deltete User' ,async () =>{
+               const res = await muke.delete('/user/1')
+
+               expect(res.status).toBe(204)
+          })
+
+
+     
+          //=========================================================
      it('404' ,async () =>{
           const res = await muke.get('/clot')
           expect(res.status).toBe(404)

@@ -6,4 +6,5 @@
 > 
 > [Actions](https://github.com/ehabsalhi/api-server/actions)
 > [comments on mohammad lab](https://github.com/ehabsalhi/api-server-mohamed)
-> Name of my partnes is : Mohamad aljoda'an 
+> 
+> Partner Name  : Mohamad aljoda'an 

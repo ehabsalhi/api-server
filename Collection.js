@@ -17,7 +17,6 @@ class Collection {
           }
           return record
      }
-//
      async create (obj){
           try{
                let record = await this.model.create(obj)
